@@ -2,13 +2,13 @@ const NodeChildProc = require("child_process");
 
 /**
  * run script
- * @param {string} npmScript script to run
+ * @param {string} str script to run
  * @returns {void}
  */
-function script(npmScript) {
-  const [manager, ...args] = npmScript.split(" ");
+function script(str) {
+  const [command, ...args] = str.split(" ");
 
-  NodeChildProc.spawnSync(manager, args, { stdio: "inherit" });
+  NodeChildProc.spawnSync(command, args, { stdio: "inherit" });
 }
 
 module.exports = {

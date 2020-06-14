@@ -23,7 +23,7 @@ $ helpn -s
   yarn run start
   yarn run prepare-release
   yarn run test:dev-package
-  // ...å
+  // ...
 ```
 
 ## License

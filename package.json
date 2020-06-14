@@ -1,0 +1,26 @@
+{
+  "name": "helpn",
+  "version": "0.0.2",
+  "description": "",
+  "bin": "src/main.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js"
+  },
+  "author": "YeonJuAn",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-eslint": "^6.0.0",
+    "eslint-plugin-jsdoc": "^27.0.7",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^26.0.1"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "enquirer": "^2.3.5",
+    "optionator": "^0.9.1"
+  },
+  "files": [
+    "src/**/*.js"
+  ]
+}

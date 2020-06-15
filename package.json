@@ -1,6 +1,6 @@
 {
-  "name": "helpn",
-  "version": "0.0.3",
+  "name": "npmh",
+  "version": "0.0.4",
   "description": "",
   "bin": "src/main.js",
   "scripts": {

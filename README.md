@@ -1,12 +1,12 @@
-# helpn
+# npmh
 
-command-line helper for npm project
+npm command-line helper
 
 ## Installation
 
 
 ```bash
-npm install -g helpn
+npm install -g npmh
 ```
 
 ## Usage

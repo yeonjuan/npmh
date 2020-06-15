@@ -1,11 +1,10 @@
 const enquirer = require("enquirer");
 const colors = require("colors");
-const run = require("../run");
 
 /**
- * styling script
- * @param {string} script script
- * @returns {string} styled script
+ * Returns styling script message.
+ * @param {string} script script.
+ * @returns {string} styled script message.
  */
 function stylingScriptMessage(script) {
   const scripts = script.split(" ");
@@ -18,9 +17,14 @@ function stylingScriptMessage(script) {
 }
 
 /**
- * Ask what script to run
- * @param {striing[]} scripts script list
- * @returns {Promise<Object>} dd
+ * @typedef {Object} Answers
+ * @property {boolean} script
+ */
+
+/**
+ * Ask what script to run.
+ * @param {string[]} scripts script list.
+ * @returns {Promise<Answers>} answers from user.
  */
 function askScriptToRun(scripts) {
   return enquirer.prompt([
@@ -41,5 +45,5 @@ module.exports = async function runHelper(project) {
     project.getRunnableScripts()
   );
 
-  run.script(script);
+  project.exec(script);
 };

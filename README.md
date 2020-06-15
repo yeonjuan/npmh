@@ -16,7 +16,7 @@ npm install -g npmh
 Print and select the runnable script in "package.json" on prompt and run it.
 
 ```bash
-$ helpn -s
+$ npmh -s
 
 ? Select a script to run … 
 ❯ yarn run test

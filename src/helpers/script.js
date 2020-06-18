@@ -1,4 +1,4 @@
-const enquirer = require("enquirer");
+const { Select } = require("enquirer");
 const colors = require("colors");
 
 /**
@@ -27,17 +27,14 @@ function stylingScriptMessage(script) {
  * @returns {Promise<Answers>} answers from user.
  */
 function askScriptToRun(scripts) {
-  return enquirer.prompt([
-    {
-      type: "select",
-      message: "Select a script to run",
-      name: "script",
-      choices: scripts.map(script => ({
-        name: script,
-        message: stylingScriptMessage(script)
-      }))
-    }
-  ]);
+  return new Select({
+    message: "Select a script to run",
+    name: "script",
+    choices: scripts.map(script => ({
+      name: script,
+      message: stylingScriptMessage(script)
+    }))
+  }).run();
 }
 
 module.exports = async function runHelper(project) {

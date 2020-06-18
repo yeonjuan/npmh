@@ -26,5 +26,20 @@ $ npmh -s
   // ...
 ```
 
+### `-i`, `--init`
+
+Initialize some non exists files needed in the project.
+
+* (TODO) package.json
+* .gitignore
+* (TODO) README.md
+* (TODO) .eslintrc
+
+```bash
+$ npmh -i
+
+? creates .gitignore? (Y/n) › true
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

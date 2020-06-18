@@ -13,5 +13,8 @@ const helpers = require("./helpers");
   if (options.script) {
     helpers.run(cwd, "script");
   }
+  if (options.init) {
+    helpers.run(cwd, "init");
+  }
 
 }(process.argv));

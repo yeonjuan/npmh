@@ -1,6 +1,6 @@
 {
   "name": "npmh",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "bin": "src/main.js",
   "scripts": {
@@ -19,6 +19,10 @@
     "colors": "^1.4.0",
     "enquirer": "^2.3.5",
     "optionator": "^0.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yeonjuan/npmh"
   },
   "files": [
     "src/**/*.js"

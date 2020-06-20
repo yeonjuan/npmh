@@ -34,7 +34,7 @@ $ npmh -s
 
 Initialize some non exists files needed in the project.
 
-- (TODO) package.json
+- package.json
 - .gitignore
 - (TODO) README.md
 - (TODO) .eslintrc
@@ -42,7 +42,8 @@ Initialize some non exists files needed in the project.
 ```bash
 $ npmh -i
 
-? creates .gitignore? (Y/n) › true
+✔ creates .gitignore? (Y/n) · true
+✔ creates package.json? (Y/n) · true
 ```
 
 ## License

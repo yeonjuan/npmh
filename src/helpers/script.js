@@ -2,7 +2,6 @@ const { Select } = require("enquirer");
 const colors = require("colors");
 
 /**
- * Returns styling script message.
  * @param {string} script script.
  * @returns {string} styled script message.
  */
@@ -22,7 +21,6 @@ function stylingScriptMessage(script) {
  */
 
 /**
- * Ask what script to run.
  * @param {string[]} scripts script list.
  * @returns {Promise<Answers>} answers from user.
  */

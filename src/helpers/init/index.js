@@ -1,16 +1,20 @@
 const { Confirm } = require("enquirer");
 const colors = require("colors");
 const initGitignore = require("./init-gitignore");
+const initPackageJson = require("./init-package-json");
 
 const INIT_FILES = [
   {
     name: ".gitignore",
     init: initGitignore
+  },
+  {
+    name: "package.json",
+    init: initPackageJson
   }
 ];
 
 /**
- * Ask init
  * @param {string} file file name
  * @returns {Promise<{init: boolean}} answers
  */
@@ -23,14 +27,15 @@ function askInit(file) {
 }
 
 module.exports = async function runHelper(project) {
-  INIT_FILES
-    .filter(({ name }) => !project.hasFile(name))
-    .forEach(async({ name, init: initialize }) => {
-      const init = await askInit(name);
+  const files = INIT_FILES.filter(({ name }) => !project.hasFile(name));
 
-      if (init) {
-        console.log("init");
-        initialize(project);
-      }
-    });
+  for (let i = 0; i < files.length; i++) {
+    const { name, init: initialize } = files[i];
+
+    const init = await askInit(name);
+
+    if (init) {
+      await initialize(project);
+    }
+  }
 };

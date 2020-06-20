@@ -5,11 +5,14 @@ const {
   unlinkSync
 } = require("fs");
 const {
-  resolve
+  resolve,
+  basename
 } = require("path");
 const {
   spawnSync
 } = require("child_process");
+
+/** @module Project */
 
 /**
  * @constructor
@@ -18,12 +21,18 @@ const {
 class Project {
   constructor(path) {
     this.path = path;
+
+    if (this.hasFile("package.json")) {
+      this.setupPackage();
+    }
+  }
+
+  setupPackage() {
     this.packageJson = JSON.parse(this.readFile("package.json") || {});
     this.manager = this.hasFile("yarn.lock") ? "yarn" : "npm";
   }
 
   /**
-   * Returns runnable scripts in project.
    * @returns {string[]} scripts.
    */
   getRunnableScripts() {
@@ -33,7 +42,6 @@ class Project {
   }
 
   /**
-   * Returns absolute path of file in project.
    * @param {string} relPath relative path.
    * @returns {string} absolute path.
    */
@@ -42,7 +50,6 @@ class Project {
   }
 
   /**
-   * Checks whether a file exists or not.
    * @param {string} relPath relative path.
    * @returns {boolean} True if a file is exists, otherwise False.
    */
@@ -51,17 +58,20 @@ class Project {
   }
 
   /**
-   * Create file at the project with contents
    * @param {string} relPath relative path
    * @param {string} contents contents to write on file.
    * @returns {void}
    */
   createFile(relPath, contents) {
-    writeFileSync(this.getAbsolutePath(relPath), contents);
+    const path = this.getAbsolutePath(relPath);
+
+    writeFileSync(path, contents);
+    if (basename(relPath) === "package.json") {
+      this.setupPackage();
+    }
   }
 
   /**
-   * Read file in project,
    * @param {string} relPath relative path.
    * @returns {string} contents of file.
    */
@@ -72,7 +82,6 @@ class Project {
   }
 
   /**
-   * Delete file in project.
    * @param {string} relPath relative path
    * @returns {void}
    */
@@ -81,7 +90,6 @@ class Project {
   }
 
   /**
-   * Exec script
    * @param {string} script script to exec.
    * @returns {void}
    */

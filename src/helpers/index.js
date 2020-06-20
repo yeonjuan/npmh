@@ -1,7 +1,6 @@
 const project = require("../project");
 
 /**
- * run
  * @param {string} path path
  * @param {string} id id
  * @param {string[]} args  args

@@ -15,6 +15,7 @@ module.exports = {
     "node/no-extraneous-require": "off",
     strict: "off",
     "no-console": "off",
-    "node/shebang": "off"
+    "node/shebang": "off",
+    "jsdoc/require-description": "off"
   }
 };

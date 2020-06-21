@@ -7,14 +7,12 @@ const GIT_IGNORES = [
       "._*",
       ".Trashes",
       "ehthumbs.db",
-      "Thumbs.db"
-    ]
+      "Thumbs.db",
+    ],
   },
   {
     description: "dependencies",
-    files: [
-      "node_modules/"
-    ]
+    files: ["node_modules/"],
   },
   {
     description: "logs",
@@ -23,16 +21,12 @@ const GIT_IGNORES = [
       "npm-debug.log*",
       "yarn-debug.log*",
       "lerna-debug.log*",
-      "logs"
-    ]
+      "logs",
+    ],
   },
   {
     description: "coverage",
-    files: [
-      "coverage",
-      "*.lcov",
-      ".nyc_output/"
-    ]
+    files: ["coverage", "*.lcov", ".nyc_output/"],
   },
   {
     description: "IDE",
@@ -44,16 +38,16 @@ const GIT_IGNORES = [
       "*.swp",
       "*.swo",
       ".settings",
-      ".buildpath"
-    ]
-  }
+      ".buildpath",
+    ],
+  },
 ];
 
 module.exports = function initGitignore(project) {
   project.createFile(
     ".gitignore",
-    GIT_IGNORES.map(({ description, files }) => (
-      `# ${description}\n${files.join("\n")}\n`
-    )).join("\n")
+    GIT_IGNORES.map(
+      ({ description, files }) => `# ${description}\n${files.join("\n")}\n`
+    ).join("\n")
   );
 };

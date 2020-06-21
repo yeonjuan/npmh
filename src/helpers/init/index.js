@@ -6,12 +6,12 @@ const initPackageJson = require("./init-package-json");
 const INIT_FILES = [
   {
     name: ".gitignore",
-    init: initGitignore
+    init: initGitignore,
   },
   {
     name: "package.json",
-    init: initPackageJson
-  }
+    init: initPackageJson,
+  },
 ];
 
 /**
@@ -19,11 +19,11 @@ const INIT_FILES = [
  * @returns {Promise<{init: boolean}} answers
  */
 function askInit(file) {
-  return (new Confirm({
+  return new Confirm({
     name: "init",
     message: `${colors.dim("creates")} ${file}?`,
-    initial: true
-  })).run();
+    initial: true,
+  }).run();
 }
 
 module.exports = async function runHelper(project) {

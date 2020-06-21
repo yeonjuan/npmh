@@ -16,7 +16,7 @@ function askPackageJsonInfo({
   name = "",
   license = "MIT",
   version = "1.0.0",
-  author = "my name"
+  author = "my name",
 }) {
   return new Form({
     name: "packageJson",
@@ -25,8 +25,8 @@ function askPackageJsonInfo({
       { name: "name", message: "name", initial: name },
       { name: "author", message: "author", initial: author },
       { name: "version", message: "version", initial: version },
-      { name: "license", message: "license", initial: license }
-    ]
+      { name: "license", message: "license", initial: license },
+    ],
   }).run();
 }
 
@@ -39,7 +39,7 @@ function createPackageJson(info) {
     Object.assign({}, info, {
       scripts: {},
       devDependencies: {},
-      dependencies: {}
+      dependencies: {},
     }),
     null,
     2
@@ -48,11 +48,8 @@ function createPackageJson(info) {
 
 module.exports = async function initPackageJson(project) {
   const packageJsonInfo = await askPackageJsonInfo({
-    name: basename(project.getAbsolutePath("./"))
+    name: basename(project.getAbsolutePath("./")),
   });
 
-  project.createFile(
-    "package.json",
-    `${createPackageJson(packageJsonInfo)}\n`
-  );
+  project.createFile("package.json", `${createPackageJson(packageJsonInfo)}\n`);
 };

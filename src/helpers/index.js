@@ -9,12 +9,9 @@ const project = require("../project");
 function run(path, id, args) {
   const helper = require(`./${id}`);
 
-  helper(
-    project.createProject(path),
-    args
-  );
+  helper(project.createProject(path), args);
 }
 
 module.exports = {
-  run
+  run,
 };

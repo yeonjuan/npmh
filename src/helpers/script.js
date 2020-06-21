@@ -11,7 +11,7 @@ function stylingScriptMessage(script) {
 
   return [
     colors.dim(script.slice(0, script.lastIndexOf(" "))),
-    colors.bold(last)
+    colors.bold(last),
   ].join(" ");
 }
 
@@ -28,17 +28,15 @@ function askScriptToRun(scripts) {
   return new Select({
     message: "Select a script to run",
     name: "script",
-    choices: scripts.map(script => ({
+    choices: scripts.map((script) => ({
       name: script,
-      message: stylingScriptMessage(script)
-    }))
+      message: stylingScriptMessage(script),
+    })),
   }).run();
 }
 
 module.exports = async function runHelper(project) {
-  const { script } = await askScriptToRun(
-    project.getRunnableScripts()
-  );
+  const { script } = await askScriptToRun(project.getRunnableScripts());
 
   project.exec(script);
 };

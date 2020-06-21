@@ -30,3 +30,5 @@ coverage
 *.swo
 .settings
 .buildpath
+
+dist

@@ -1,27 +1,29 @@
-import { existsSync, writeFileSync, readFileSync, unlinkSync } from "fs";
-import { resolve, basename } from "path";
-import { spawnSync } from "child_process";
+import { existsSync, writeFileSync, readFileSync, unlinkSync } from 'fs';
+import { resolve, basename } from 'path';
+import { spawnSync } from 'child_process';
 
-class Project {
+type PackageManager = 'npm' | 'yarn' | 'lerna';
+
+export class Project {
   private packageJson: PackageJson = {};
-  private manager: PackageManager = "npm";
+  private manager: PackageManager = 'npm';
 
   constructor(readonly path: string) {
     this.path = path;
-    if (this.hasFile("package.json")) {
+    if (this.hasFile('package.json')) {
       this.setupPackage();
     }
   }
 
   setupPackage(): void {
-    this.packageJson = (JSON.parse(this.readFile("package.json")) ||
+    this.packageJson = (JSON.parse(this.readFile('package.json')) ||
       {}) as PackageJson;
-    this.manager = this.hasFile("yarn.lock") ? "yarn" : "npm";
+    this.manager = this.hasFile('yarn.lock') ? 'yarn' : 'npm';
   }
 
   getRunnableScripts(): string[] {
     return Object.keys(this.packageJson.scripts ?? {}).map(
-      (script) => `${this.manager} run ${script}`
+      script => `${this.manager} run ${script}`,
     );
   }
 
@@ -37,15 +39,15 @@ class Project {
     const path = this.getAbsolutePath(relPath);
 
     writeFileSync(path, contents);
-    if (basename(relPath) === "package.json") {
+    if (basename(relPath) === 'package.json') {
       this.setupPackage();
     }
   }
 
   readFile(relPath: string): string {
     return this.hasFile(relPath)
-      ? readFileSync(this.getAbsolutePath(relPath), "utf-8")
-      : "";
+      ? readFileSync(this.getAbsolutePath(relPath), 'utf-8')
+      : '';
   }
 
   deleteFile(relPath: string): void {
@@ -53,10 +55,10 @@ class Project {
   }
 
   exec(script: string): void {
-    const [command, ...args] = script.split(" ");
+    const [command, ...args] = script.split(' ');
 
     spawnSync(command, args, {
-      stdio: "inherit",
+      stdio: 'inherit',
       cwd: this.path,
     });
   }

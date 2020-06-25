@@ -7,4 +7,17 @@ interface PackageJson {
   license?: string;
 }
 
-type PackageManager = "npm" | "yarn";
+type PackageManager = 'npm' | 'yarn' | 'lerna';
+
+declare module 'enquirer' {
+  interface EnquirerOption {
+    message?: string;
+    name?: string;
+    choices?: { name: string; message: string }[];
+  }
+
+  export class Select<T> {
+    constructor(option: EnquirerOption);
+    run(): Promise<T>;
+  }
+}

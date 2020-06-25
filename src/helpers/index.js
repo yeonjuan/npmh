@@ -1,4 +1,4 @@
-const project = require("../project");
+const project = require('../project');
 
 /**
  * @param {string} path path
@@ -9,7 +9,9 @@ const project = require("../project");
 function run(path, id, args) {
   const helper = require(`./${id}`);
 
-  helper(project.createProject(path), args);
+  const run = typeof helper.default === "function" ? helper.default : helper;
+  run(project.createProject(path), args);
+  
 }
 
 module.exports = {

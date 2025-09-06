@@ -2,32 +2,30 @@
   "name": "npmh",
   "version": "0.0.6",
   "description": "",
-  "bin": "src/main.js",
   "scripts": {
-    "lint": "eslint src/**/*.ts",
-    "format": "prettier --write \"./**/*.{ts,js,json,md}\"",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "format": "prettier --write \"./**/*.{ts,js,json,md}\""
   },
   "author": "YeonJuAn",
   "license": "MIT",
+  "main": "dist/index.js",
+  "bin": {
+    "npmh": "dist/index.js"
+  },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.6.0",
-    "@typescript-eslint/parser": "^4.6.0",
-    "eslint": "^7.2.0",
-    "jest": "^26.0.1",
-    "prettier": "^2.0.5",
-    "typescript": "^4.0.5"
+    "@types/inquirer": "^9.0.0",
+    "@types/node": "^18.0.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.0.0"
   },
   "dependencies": {
-    "colors": "^1.4.0",
-    "enquirer": "^2.3.5",
-    "optionator": "^0.9.1"
+    "commander": "^14.0.0",
+    "inquirer": "^12.9.4"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/yeonjuan/npmh"
-  },
-  "files": [
-    "src/**/*.js"
-  ]
+  }
 }

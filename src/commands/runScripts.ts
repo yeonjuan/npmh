@@ -28,8 +28,7 @@ export async function runScripts() {
 
     console.log(`\nRunning: ${runCommand}\n`);
 
-    const commandArgs =
-      packageManager === "npm" ? ["run", selectedScript] : [selectedScript];
+    const commandArgs = [selectedScript];
 
     const child = spawn(packageManager, commandArgs, {
       stdio: "inherit",

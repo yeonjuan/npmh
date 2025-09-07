@@ -27,5 +27,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/yeonjuan/npmh"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

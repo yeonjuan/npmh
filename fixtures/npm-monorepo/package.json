@@ -1,0 +1,11 @@
+{
+  "name": "npm-monorepo",
+  "private": true,
+  "scripts": {
+    "root-script1": "echo \"root-script1\"",
+    "root-script2": "echo \"root-script2\""
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "yarn-monorepo",
+  "root": true,
+  "private": true,
+  "scripts": {
+    "script1": "echo \"script1\"",
+    "script2": "echo \"script2\""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@4.6.0"
+}

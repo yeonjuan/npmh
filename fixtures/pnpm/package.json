@@ -1,0 +1,14 @@
+{
+  "name": "pnpm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "script1": "echo \"script1\"",
+    "script2": "echo \"script2\""
+  },
+  "keywords": [],
+  "author": "",
+  "packageManager": "pnpm@9.15.4",
+  "license": "ISC"
+}
